@@ -22,6 +22,7 @@ const applicationsChannelModel = require('../schemas/applicationchannel')
 const verificationChannelModel = require('../schemas/verificationchannel')
 const datingModel = require('../schemas/datingsim')
 const matchInfoModel = require('../schemas/matchinfo')
+const genderModel = require('../schemas/genderroles')
 require('dotenv').config()
 let i = 1
 const dashboard = {
@@ -62,7 +63,6 @@ const dashboard = {
       });
 
       const botGuilds = botGuildsResponse.data
-
 
       const commonGuilds = guilds.filter(g => botGuilds.find(bg => (bg.id == g.id) && (g.permissions & 0x08) === 0x08));
 
@@ -303,7 +303,7 @@ const dashboard = {
   },
 
   dashboardSend: async (req, res) => {
-    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles } = req.body
+    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles, maleRole, femaleRole, tnbgfRole } = req.body
 
 
     try {
@@ -462,16 +462,16 @@ const dashboard = {
       }
 
       if (maleChannel.length > 0) {
-        const datingSchema = await datingModel.findOne({ guild })
+        const datingSchema = await profileChannelsModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await datingModel.findOneAndUpdate({ male_channel: maleChannel })
+          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ male_profiles_channel: maleChannel })
         } else {
           const obj = {
             guild,
-            male_channel: maleChannel
+            male_profiles_channel: maleChannel
           }
-          const datingSchema3 = await datingModel.create(obj)
+          const datingSchema3 = await profileChannelsModel.create(obj)
 
         }
 
@@ -479,16 +479,16 @@ const dashboard = {
       }
 
       if (femaleChannel.length > 0) {
-        const datingSchema = await datingModel.findOne({ guild })
+        const datingSchema = await profileChannelsModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await datingModel.findOneAndUpdate({ female_channel: femaleChannel })
+          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ female_profiles_channel: femaleChannel })
         } else {
           const obj = {
             guild,
-            female_channel: femaleChannel
+            female_profiles_channel: femaleChannel
           }
-          const datingSchema3 = await datingModel.create(obj)
+          const datingSchema3 = await profileChannelsModel.create(obj)
 
         }
 
@@ -496,16 +496,67 @@ const dashboard = {
       }
 
       if (nbgfChannel.length > 0) {
-        const datingSchema = await datingModel.findOne({ guild })
+        const datingSchema = await profileChannelsModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await datingModel.findOneAndUpdate({ nbgf_channel: nbgfChannel })
+          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ tnbg_profiles_channel: nbgfChannel })
         } else {
           const obj = {
             guild,
-            nbgf_channel: nbgfChannel
+            tnbg_profiles_channel: nbgfChannel
           }
-          const datingSchema3 = await datingModel.create(obj)
+          const datingSchema3 = await profileChannelsModel.create(obj)
+
+        }
+
+
+      }
+
+      if (maleRole.length > 0) {
+        const genderSchema = await genderModel.findOne({ guild })
+
+        if (genderSchema) {
+          const genderSchema2 = await genderModel.findOneAndUpdate({ male_role: maleRole })
+        } else {
+          const obj = {
+            guild,
+            male_role: maleRole
+          }
+          const genderSchema3 = await genderModel.create(obj)
+
+        }
+
+
+      }
+
+      if (femaleRole.length > 0) {
+        const genderSchema = await genderModel.findOne({ guild })
+
+        if (genderSchema) {
+          const genderSchema2 = await genderModel.findOneAndUpdate({ female_role: femaleRole })
+        } else {
+          const obj = {
+            guild,
+            female_role: femaleRole
+          }
+          const genderSchema3 = await genderModel.create(obj)
+
+        }
+
+
+      }
+
+      if (tnbgfRole.length > 0) {
+        const genderSchema = await genderModel.findOne({ guild })
+
+        if (genderSchema) {
+          const genderSchema2 = await genderModel.findOneAndUpdate({ tnbgf_role: tnbgfRole })
+        } else {
+          const obj = {
+            guild,
+            tnbgf_role: tnbgfRole
+          }
+          const genderSchema3 = await genderModel.create(obj)
 
         }
 
