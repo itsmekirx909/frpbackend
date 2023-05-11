@@ -309,6 +309,13 @@ const dashboard = {
 
     try {
 
+      const values = [a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31]
+      if (new Set(values).size !== values.length) {
+        res.status(500).send({ message: 'Can not use same role for multiple ages!' });
+        return
+      }
+
+
       if (giveawayPing.length > 0) {
         const giveawaySchema = await giveawayPingModel.findOne({ guild })
 
@@ -1076,7 +1083,6 @@ const dashboard = {
 
 
     } catch (error) {
-      console.error(error.message);
       res.status(500).send({ message: 'An error occurred while fetching data.' });
     }
 
