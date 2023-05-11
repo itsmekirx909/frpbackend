@@ -311,7 +311,10 @@ const dashboard = {
 
       const values = [a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31]
       if (new Set(values).size !== values.length) {
-        res.status(500).send({ message: 'Can not use same role for multiple ages!' });
+        res.json({
+          message: 'Can not use same role for multiple ages!',
+          status: false
+        })
         return
       }
 
@@ -1072,6 +1075,7 @@ const dashboard = {
 
       // sending selfroles, automd, rules and ticket categories
       res.json({
+        status: true,
         reactRoles: reactRolesNew,
         automod: automodNew,
         rules: rulesNew,
