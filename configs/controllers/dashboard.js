@@ -23,6 +23,7 @@ const verificationChannelModel = require('../schemas/verificationchannel')
 const datingModel = require('../schemas/datingsim')
 const matchInfoModel = require('../schemas/matchinfo')
 const genderModel = require('../schemas/genderroles')
+const ageModel = require('../schemas/ageroles')
 require('dotenv').config()
 let i = 1
 const dashboard = {
@@ -303,7 +304,7 @@ const dashboard = {
   },
 
   dashboardSend: async (req, res) => {
-    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles, maleRole, femaleRole, tnbgfRole } = req.body
+    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31 } = req.body
 
 
     try {
@@ -659,6 +660,244 @@ const dashboard = {
             given_role: givenRole
           }
           const matchSchema3 = await matchInfoModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a18.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_18: a18 })
+        } else {
+          const obj = {
+            guild,
+            age_18: a18
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a19.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_19: a19 })
+        } else {
+          const obj = {
+            guild,
+            age_19: a19
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a20.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_20: a20 })
+        } else {
+          const obj = {
+            guild,
+            age_20: a20
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a21.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_21: a21 })
+        } else {
+          const obj = {
+            guild,
+            age_21: a21
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a22.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_22: a22 })
+        } else {
+          const obj = {
+            guild,
+            age_22: a22
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a23.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_23: a23 })
+        } else {
+          const obj = {
+            guild,
+            age_23: a23
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a24.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_24: a24 })
+        } else {
+          const obj = {
+            guild,
+            age_24: a24
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a25.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_25: a25 })
+        } else {
+          const obj = {
+            guild,
+            age_25: a25
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a26.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_26: a26 })
+        } else {
+          const obj = {
+            guild,
+            age_26: a26
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a27.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_27: a27 })
+        } else {
+          const obj = {
+            guild,
+            age_27: a27
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a28.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_28: a28 })
+        } else {
+          const obj = {
+            guild,
+            age_28: a28
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a29.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_29: a29 })
+        } else {
+          const obj = {
+            guild,
+            age_29: a29
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a30.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_30: a30 })
+        } else {
+          const obj = {
+            guild,
+            age_30: a30
+          }
+          const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (a31.length > 0) {
+        const ageSchema = await ageModel.findOne({ guild })
+
+        if (ageSchema) {
+          const ageSchema2 = await ageModel.findOneAndUpdate({ age_31: a31 })
+        } else {
+          const obj = {
+            guild,
+            age_31: a31
+          }
+          const ageSchema3 = await ageModel.create(obj)
 
         }
 
