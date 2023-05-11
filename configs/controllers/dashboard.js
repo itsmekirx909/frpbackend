@@ -309,7 +309,15 @@ const dashboard = {
 
     try {
 
-      const values = [a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31]
+      const uValues = [a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31]
+      const values = []
+
+      uValues.map(v =>{
+        if(v){
+          values.push(v)
+        }
+      })
+
       if (new Set(values).size !== values.length) {
         res.json({
           message: 'Can not use same role for multiple ages!',
