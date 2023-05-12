@@ -8,6 +8,8 @@ router.post('/api/guildsdata', dashboard.guildsData)
 
 router.post('/api/reactrolesdata', dashboard.reactRolesData)
 
-router.post('/api/dashboardsend', dashboard.dashboardSend)
+router.post('/api/dashboardsendarray', dashboard.dashboardSend)
+
+router.post('/api/dashboardsend', dashboard.dashboardSend2)
 
 module.exports = router

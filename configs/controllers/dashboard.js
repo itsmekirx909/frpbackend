@@ -305,7 +305,172 @@ const dashboard = {
   },
 
   dashboardSend: async (req, res) => {
-    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole } = req.body
+    const { guild, selfRolesData, rules, categories, requiredRoles, matchRoles, requiredMatchRoles, disabledRoles } = req.body
+
+
+    try {
+
+      
+      //self roles
+      const selfRolesScehma = await reactionRolesModel.findOne({ guild })
+
+      let reactRolesNew
+      if (selfRolesScehma) {
+        const selfRolesScehma2 = await reactionRolesModel.findOneAndUpdate({ guild }, { data: selfRolesData })
+
+        reactRolesNew = selfRolesScehma2.data
+
+      } else {
+        const obj = {
+          guild,
+          data: selfRolesData
+        }
+        const selfRolesScehma3 = await reactionRolesModel.create(obj)
+
+        reactRolesNew = selfRolesScehma3.data
+      }
+
+
+      //rules
+      const rulesSchema = await rulesModel.findOne({ guild })
+
+      let rulesNew
+      if (rulesSchema) {
+        const rulesSchema2 = await rulesModel.findOneAndUpdate({ guild }, { rules: rules })
+
+        rulesNew = rulesSchema2.data
+
+      } else {
+        const obj = {
+          guild,
+          rules: rules
+        }
+        const rulesSchema3 = await rulesModel.create(obj)
+
+        rulesNew = rulesSchema3.data
+      }
+
+
+      //tickeet categories
+      const ticketCategoriesSchema = await ticketCategoriesModel.findOne({ guild })
+
+      let categoriesNew
+      if (ticketCategoriesSchema) {
+        const ticketCategoriesSchema2 = await ticketCategoriesModel.findOneAndUpdate({ guild }, { categories: categories })
+
+        categoriesNew = ticketCategoriesSchema2.data
+
+      } else {
+        const obj = {
+          guild,
+          categories: categories
+        }
+        const ticketCategoriesSchema3 = await ticketCategoriesModel.create(obj)
+
+        categoriesNew = ticketCategoriesSchema3.data
+      }
+
+
+      //required roles to make profiles
+      const requiredSchema = await serverProfilesModel.findOne({ guild })
+
+      let requiredNew
+      if (requiredSchema) {
+        const requiredSchema2 = await serverProfilesModel.findOneAndUpdate({ guild }, { required_roles: requiredRoles })
+
+        requiredNew = requiredSchema2.data
+
+      } else {
+        const obj = {
+          guild,
+          required_roles: requiredRoles
+        }
+        const requiredSchema3 = await serverProfilesModel.create(obj)
+
+        requiredNew = requiredSchema3.data
+
+      }
+
+
+      //match roles
+      const matchSchema = await matchModel.findOne({ guild })
+
+      let matchNew
+      if (matchSchema) {
+        const matchSchema2 = await matchModel.findOneAndUpdate({ guild }, { match_roles: matchRoles })
+
+        matchNew = matchSchema2.data
+
+      } else {
+        const obj = {
+          guild,
+          match_roles: matchRoles
+        }
+        const matchSchema3 = await matchModel.create(obj)
+
+        matchNew = matchSchema3.data
+      }
+
+
+      //required match roles
+      const requiredMatchRolesSchema = await requiredMatchModel.findOne({ guild })
+
+      let requiredMatchRolesNew
+      if (requiredMatchRolesSchema) {
+        const requiredMatchRolesSchema2 = await requiredMatchModel.findOneAndUpdate({ guild }, { required_roles: requiredMatchRoles })
+
+        requiredMatchRolesNew = requiredMatchRolesSchema2.data
+
+      } else {
+        const obj = {
+          guild,
+          required_roles: requiredMatchRoles
+        }
+        const requiredMatchRolesSchema3 = await requiredMatchModel.create(obj)
+
+        requiredMatchRolesNew = requiredMatchRolesSchema3.data
+      }
+
+      //roles not allowed for match
+      const disabledMatchSchema = await matchInfoModel.findOne({ guild })
+
+      let disabledMatchRoles
+      if (disabledMatchSchema) {
+        const disabledMatchSchema2 = await matchInfoModel.findOneAndUpdate({ guild }, { disabled_roles: disabledRoles })
+
+        disabledMatchRoles = disabledMatchSchema2.data
+
+      } else {
+        const obj = {
+          guild,
+          disabled_roles: disabledRoles
+        }
+        const disabledMatchSchema3 = await matchInfoModel.create(obj)
+
+        disabledMatchRoles = disabledMatchSchema3.data
+      }
+
+      // sending selfroles, automd, rules and ticket categories
+      res.json({
+        status: true,
+        reactRoles: reactRolesNew,
+        automod: automodNew,
+        rules: rulesNew,
+        categories: categoriesNew,
+        requiredRoles: requiredNew,
+        matchRoles: matchNew,
+        disabledMatchRoles
+      })
+
+
+    } catch (error) {
+      res.status(500).send({ message: 'An error occurred while fetching data.' });
+    }
+
+  },
+
+  dashboardSend2: async (req, res) => {
+    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, searching, givenRole, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole } = req.body
 
 
     try {
@@ -1009,159 +1174,6 @@ const dashboard = {
 
         automodNew = automodSchema3.data
       }
-
-
-      //self roles
-      const selfRolesScehma = await reactionRolesModel.findOne({ guild })
-
-      let reactRolesNew
-      if (selfRolesScehma) {
-        const selfRolesScehma2 = await reactionRolesModel.findOneAndUpdate({ guild }, { data: selfRolesData })
-
-        reactRolesNew = selfRolesScehma2.data
-
-      } else {
-        const obj = {
-          guild,
-          data: selfRolesData
-        }
-        const selfRolesScehma3 = await reactionRolesModel.create(obj)
-
-        reactRolesNew = selfRolesScehma3.data
-      }
-
-
-      //rules
-      const rulesSchema = await rulesModel.findOne({ guild })
-
-      let rulesNew
-      if (rulesSchema) {
-        const rulesSchema2 = await rulesModel.findOneAndUpdate({ guild }, { rules: rules })
-
-        rulesNew = rulesSchema2.data
-
-      } else {
-        const obj = {
-          guild,
-          rules: rules
-        }
-        const rulesSchema3 = await rulesModel.create(obj)
-
-        rulesNew = rulesSchema3.data
-      }
-
-
-      //tickeet categories
-      const ticketCategoriesSchema = await ticketCategoriesModel.findOne({ guild })
-
-      let categoriesNew
-      if (ticketCategoriesSchema) {
-        const ticketCategoriesSchema2 = await ticketCategoriesModel.findOneAndUpdate({ guild }, { categories: categories })
-
-        categoriesNew = ticketCategoriesSchema2.data
-
-      } else {
-        const obj = {
-          guild,
-          categories: categories
-        }
-        const ticketCategoriesSchema3 = await ticketCategoriesModel.create(obj)
-
-        categoriesNew = ticketCategoriesSchema3.data
-      }
-
-
-      //required roles to make profiles
-      const requiredSchema = await serverProfilesModel.findOne({ guild })
-
-      let requiredNew
-      if (requiredSchema) {
-        const requiredSchema2 = await serverProfilesModel.findOneAndUpdate({ guild }, { required_roles: requiredRoles })
-
-        requiredNew = requiredSchema2.data
-
-      } else {
-        const obj = {
-          guild,
-          required_roles: requiredRoles
-        }
-        const requiredSchema3 = await serverProfilesModel.create(obj)
-
-        requiredNew = requiredSchema3.data
-
-      }
-
-
-      //match roles
-      const matchSchema = await matchModel.findOne({ guild })
-
-      let matchNew
-      if (matchSchema) {
-        const matchSchema2 = await matchModel.findOneAndUpdate({ guild }, { match_roles: matchRoles })
-
-        matchNew = matchSchema2.data
-
-      } else {
-        const obj = {
-          guild,
-          match_roles: matchRoles
-        }
-        const matchSchema3 = await matchModel.create(obj)
-
-        matchNew = matchSchema3.data
-      }
-
-
-      //required match roles
-      const requiredMatchRolesSchema = await requiredMatchModel.findOne({ guild })
-
-      let requiredMatchRolesNew
-      if (requiredMatchRolesSchema) {
-        const requiredMatchRolesSchema2 = await requiredMatchModel.findOneAndUpdate({ guild }, { required_roles: requiredMatchRoles })
-
-        requiredMatchRolesNew = requiredMatchRolesSchema2.data
-
-      } else {
-        const obj = {
-          guild,
-          required_roles: requiredMatchRoles
-        }
-        const requiredMatchRolesSchema3 = await requiredMatchModel.create(obj)
-
-        requiredMatchRolesNew = requiredMatchRolesSchema3.data
-      }
-
-      //roles not allowed for match
-      const disabledMatchSchema = await matchInfoModel.findOne({ guild })
-
-      let disabledMatchRoles
-      if (disabledMatchSchema) {
-        const disabledMatchSchema2 = await matchInfoModel.findOneAndUpdate({ guild }, { disabled_roles: disabledRoles })
-
-        disabledMatchRoles = disabledMatchSchema2.data
-
-      } else {
-        const obj = {
-          guild,
-          disabled_roles: disabledRoles
-        }
-        const disabledMatchSchema3 = await matchInfoModel.create(obj)
-
-        disabledMatchRoles = disabledMatchSchema3.data
-      }
-
-      // sending selfroles, automd, rules and ticket categories
-      res.json({
-        status: true,
-        reactRoles: reactRolesNew,
-        automod: automodNew,
-        rules: rulesNew,
-        categories: categoriesNew,
-        requiredRoles: requiredNew,
-        matchRoles: matchNew,
-        disabledMatchRoles
-      })
-
 
     } catch (error) {
       res.status(500).send({ message: 'An error occurred while fetching data.' });
