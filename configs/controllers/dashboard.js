@@ -464,7 +464,7 @@ const dashboard = {
 
 
     } catch (error) {
-      res.status(500).send({ message: 'An error occurred while fetching data.' });
+      res.status(500).send({ message: error.message });
     }
 
   },
@@ -1176,7 +1176,7 @@ const dashboard = {
       }
 
     } catch (error) {
-      res.status(500).send({ message: 'An error occurred while fetching data.' });
+      res.status(500).send({ message: error.message });
     }
 
   }
