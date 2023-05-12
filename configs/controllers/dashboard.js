@@ -24,6 +24,7 @@ const datingModel = require('../schemas/datingsim')
 const matchInfoModel = require('../schemas/matchinfo')
 const genderModel = require('../schemas/genderroles')
 const ageModel = require('../schemas/ageroles')
+const verifiedModel = require('../schemas/verifiedroles')
 require('dotenv').config()
 let i = 1
 const dashboard = {
@@ -304,7 +305,7 @@ const dashboard = {
   },
 
   dashboardSend: async (req, res) => {
-    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31 } = req.body
+    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, selfRolesData, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, rules, categories, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, requiredRoles, matchRoles, requiredMatchRoles, searching, givenRole, disabledRoles, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole } = req.body
 
 
     try {
@@ -916,6 +917,74 @@ const dashboard = {
             age_31: a31
           }
           const ageSchema3 = await ageModel.create(obj)
+
+        }
+
+
+      }
+
+      if (verified.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
+
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ age_verified_role: verified })
+        } else {
+          const obj = {
+            guild,
+            age_verified_role: verified
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
+
+        }
+
+
+      }
+
+      if (verifiedMaleRole.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
+
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ male_verified_role: verifiedMaleRole })
+        } else {
+          const obj = {
+            guild,
+            male_verified_role: verifiedMaleRole
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
+
+        }
+
+
+      }
+
+      if (verifiedFemaleRole.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
+
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ female_verified_role: verifiedFemaleRole })
+        } else {
+          const obj = {
+            guild,
+            female_verified_role: verifiedFemaleRole
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
+
+        }
+
+
+      }
+
+      if (verifiedTnbgfRole.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
+
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ tnbgf_verified_role: verifiedTnbgfRole })
+        } else {
+          const obj = {
+            guild,
+            tnbgf_verified_role: verifiedTnbgfRole
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
 
         }
 
