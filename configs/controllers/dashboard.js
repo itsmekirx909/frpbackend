@@ -1088,73 +1088,73 @@ const dashboard = {
 
       }
 
-      // if (verified.length > 0) {
-      //   const verifiedSchema = await verifiedModel.findOne({ guild })
+      if (verified.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
 
-      //   if (verifiedSchema) {
-      //     const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ age_verified_role: verified })
-      //   } else {
-      //     const obj = {
-      //       guild,
-      //       age_verified_role: verified
-      //     }
-      //     const verifiedSchema3 = await verifiedModel.create(obj)
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ age_verified_role: verified })
+        } else {
+          const obj = {
+            guild,
+            age_verified_role: verified
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
 
-      //   }
-
-
-      // }
-
-      // if (verifiedMaleRole.length > 0) {
-      //   const verifiedSchema = await verifiedModel.findOne({ guild })
-
-      //   if (verifiedSchema) {
-      //     const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ male_verified_role: verifiedMaleRole })
-      //   } else {
-      //     const obj = {
-      //       guild,
-      //       male_verified_role: verifiedMaleRole
-      //     }
-      //     const verifiedSchema3 = await verifiedModel.create(obj)
-
-      //   }
+        }
 
 
-      // }
+      }
 
-      // if (verifiedFemaleRole.length > 0) {
-      //   const verifiedSchema = await verifiedModel.findOne({ guild })
+      if (verifiedMaleRole.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
 
-      //   if (verifiedSchema) {
-      //     const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ female_verified_role: verifiedFemaleRole })
-      //   } else {
-      //     const obj = {
-      //       guild,
-      //       female_verified_role: verifiedFemaleRole
-      //     }
-      //     const verifiedSchema3 = await verifiedModel.create(obj)
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ male_verified_role: verifiedMaleRole })
+        } else {
+          const obj = {
+            guild,
+            male_verified_role: verifiedMaleRole
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
 
-      //   }
-
-
-      // }
-
-      // if (verifiedTnbgfRole.length > 0) {
-      //   const verifiedSchema = await verifiedModel.findOne({ guild })
-
-      //   if (verifiedSchema) {
-      //     const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ tnbgf_verified_role: verifiedTnbgfRole })
-      //   } else {
-      //     const obj = {
-      //       guild,
-      //       tnbgf_verified_role: verifiedTnbgfRole
-      //     }
-      //     const verifiedSchema3 = await verifiedModel.create(obj)
-
-      //   }
+        }
 
 
-      // }
+      }
+
+      if (verifiedFemaleRole.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
+
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ female_verified_role: verifiedFemaleRole })
+        } else {
+          const obj = {
+            guild,
+            female_verified_role: verifiedFemaleRole
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
+
+        }
+
+
+      }
+
+      if (verifiedTnbgfRole.length > 0) {
+        const verifiedSchema = await verifiedModel.findOne({ guild })
+
+        if (verifiedSchema) {
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ tnbgf_verified_role: verifiedTnbgfRole })
+        } else {
+          const obj = {
+            guild,
+            tnbgf_verified_role: verifiedTnbgfRole
+          }
+          const verifiedSchema3 = await verifiedModel.create(obj)
+
+        }
+
+
+      }
 
       //automod
       const automodSchema = await automodModel.findOne({ guild })
