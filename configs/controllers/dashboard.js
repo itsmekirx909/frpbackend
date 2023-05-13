@@ -504,7 +504,7 @@ const dashboard = {
         }
       })
 
-      if (new Set(values).size !== values.length) {
+      if (new Set(values).size !== values.length && values.length) {
         res.json({
           message: 'Can not use same role for multiple ages!',
           status: false
