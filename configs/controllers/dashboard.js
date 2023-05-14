@@ -25,8 +25,11 @@ const matchInfoModel = require('../schemas/matchinfo')
 const genderModel = require('../schemas/genderroles')
 const ageModel = require('../schemas/ageroles')
 const verifiedModel = require('../schemas/verifiedroles')
+const cmModel = require('../schemas/confesslogs')
+const membersModel = require('../schemas/members')
+const otherLogsModel = require('../schemas/otherlogs')
 require('dotenv').config()
-let i = 1
+
 const dashboard = {
 
   userData: async (req, res) => {
@@ -490,7 +493,7 @@ const dashboard = {
   },
 
   dashboardSend2: async (req, res) => {
-    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, searching, givenRole, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole } = req.body
+    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, searching, givenRole, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole, updatemsgs, matchLogs, confessionsLogs, membersJoinLogs, membersLeaveLogs, miscLogs, boostsLogs, } = req.body
 
 
     try {
@@ -778,6 +781,23 @@ const dashboard = {
           const obj = {
             guild,
             message_delete_logs_channel: delmsgs
+          }
+          const delmsgsSchema3 = await delmsgslogModel.create(obj)
+
+        }
+
+
+      }
+
+      if (updatemsgs) {
+        const delmsgsSchema = await delmsgslogModel.findOne({ guild })
+
+        if (delmsgsSchema) {
+          const delmsgsSchema2 = await delmsgslogModel.findOneAndUpdate({ message_update_logs_channel: updatemsgs })
+        } else {
+          const obj = {
+            guild,
+            message_update_logs_channel: updatemsgs
           }
           const delmsgsSchema3 = await delmsgslogModel.create(obj)
 
@@ -1171,6 +1191,108 @@ const dashboard = {
             tnbgf_verified_role: verifiedTnbgfRole
           }
           const verifiedSchema3 = await verifiedModel.create(obj)
+
+        }
+
+
+      }
+
+      if (matchLogs) {
+        const cmSchema = await cmModel.findOne({ guild })
+
+        if (cmSchema) {
+          const cmSchema2 = await cmModel.findOneAndUpdate({ match_logs_channel: matchLogs })
+        } else {
+          const obj = {
+            guild,
+            match_logs_channel: matchLogs
+          }
+          const cmSchema3 = await cmModel.create(obj)
+
+        }
+
+
+      }
+
+      if (confessionsLogs) {
+        const cmSchema = await cmModel.findOne({ guild })
+
+        if (cmSchema) {
+          const cmSchema2 = await cmModel.findOneAndUpdate({ confessions_logs_channel: confessionsLogs })
+        } else {
+          const obj = {
+            guild,
+            confessions_logs_channel: confessionsLogs
+          }
+          const cmSchema3 = await cmModel.create(obj)
+
+        }
+
+
+      }
+
+      if (membersJoinLogs) {
+        const membersSchema = await membersModel.findOne({ guild })
+
+        if (membersSchema) {
+          const membersSchema2 = await membersModel.findOneAndUpdate({ members_join_logs_channel: membersJoinLogs })
+        } else {
+          const obj = {
+            guild,
+            members_join_logs_channel: membersJoinLogs
+          }
+          const membersSchema3 = await membersModel.create(obj)
+
+        }
+
+
+      }
+
+      if (membersLeaveLogs) {
+        const membersSchema = await membersModel.findOne({ guild })
+
+        if (membersSchema) {
+          const membersSchema2 = await membersModel.findOneAndUpdate({ members_join_logs_channel: membersLeaveLogs })
+        } else {
+          const obj = {
+            guild,
+            members_join_logs_channel: membersLeaveLogs
+          }
+          const membersSchema3 = await membersModel.create(obj)
+
+        }
+
+
+      }
+
+      if (miscLogs) {
+        const otherLogsSchema = await otherLogsModel.findOne({ guild })
+
+        if (otherLogsSchema) {
+          const otherLogsSchema2 = await otherLogsModel.findOneAndUpdate({ misc_logs_channel: miscLogs })
+        } else {
+          const obj = {
+            guild,
+            misc_logs_channel: miscLogs
+          }
+          const otherLogsSchema3 = await otherLogsModel.create(obj)
+
+        }
+
+
+      }
+
+      if (boostsLogs) {
+        const otherLogsSchema = await otherLogsModel.findOne({ guild })
+
+        if (otherLogsSchema) {
+          const otherLogsSchema2 = await otherLogsModel.findOneAndUpdate({ boosts_logs_channel: boostsLogs })
+        } else {
+          const obj = {
+            guild,
+            boosts_logs_channel: boostsLogs
+          }
+          const otherLogsSchema3 = await otherLogsModel.create(obj)
 
         }
 
