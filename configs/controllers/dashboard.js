@@ -1301,7 +1301,8 @@ const dashboard = {
       }
 
       res.json({
-        message: 'Successfully saved'
+        message: 'Successfully saved',
+        status: true
       })
 
     } catch (error) {
