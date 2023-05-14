@@ -507,6 +507,10 @@ const dashboard = {
         }
       })
 
+      console.log(values)
+      console.log(new Set(values))
+      console.log(values.length)
+
 
       if (new Set(values).size !== values.length && values.length) {
         res.json({
@@ -1252,11 +1256,11 @@ const dashboard = {
         const membersSchema = await membersModel.findOne({ guild })
 
         if (membersSchema) {
-          const membersSchema2 = await membersModel.findOneAndUpdate({ members_join_logs_channel: membersLeaveLogs })
+          const membersSchema2 = await membersModel.findOneAndUpdate({ members_leave_logs_channel: membersLeaveLogs })
         } else {
           const obj = {
             guild,
-            members_join_logs_channel: membersLeaveLogs
+            members_leave_logs_channel: membersLeaveLogs
           }
           const membersSchema3 = await membersModel.create(obj)
 
