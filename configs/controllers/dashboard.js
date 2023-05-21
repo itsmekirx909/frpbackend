@@ -28,6 +28,7 @@ const verifiedModel = require('../schemas/verifiedroles')
 const cmModel = require('../schemas/confesslogs')
 const membersModel = require('../schemas/members')
 const otherLogsModel = require('../schemas/otherlogs')
+const muteRoleModel = require('../schemas/muterole')
 require('dotenv').config()
 
 const dashboard = {
@@ -493,7 +494,7 @@ const dashboard = {
   },
 
   dashboardSend2: async (req, res) => {
-    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, delmsgs, warnlogs, ticketlogs, kmbulogs, automod, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, searching, givenRole, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole, updatemsgs, matchLogs, confessionsLogs, membersJoinLogs, membersLeaveLogs, miscLogs, boostsLogs, } = req.body
+    const { guild, giveawayPing, suggestionChannel, confessionChannel, confessionReplyChannel, nsfw, delmsgs, warnlogs, ticketlogs, kmbulogs, profilesChannels, applicationsChannel, verificationChannel, maleChannel, femaleChannel, nbgfChannel, unverified, searching, givenRole, maleRole, femaleRole, tnbgfRole, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, verified, verifiedMaleRole, verifiedFemaleRole, verifiedTnbgfRole, updatemsgs, matchLogs, confessionsLogs, membersJoinLogs, membersLeaveLogs, miscLogs, boostsLogs, muteRole } = req.body
 
 
     try {
@@ -1294,6 +1295,23 @@ const dashboard = {
             boosts_logs_channel: boostsLogs
           }
           const otherLogsSchema3 = await otherLogsModel.create(obj)
+
+        }
+
+
+      }
+
+      if (muteRole) {
+        const muteRoleSchema = await muteRoleModel.findOne({ guild })
+
+        if (muteRoleSchema) {
+          const muteRoleSchema2 = await muteRoleModel.findOneAndUpdate({ role: muteRole })
+        } else {
+          const obj = {
+            guild,
+            role: muteRole
+          }
+          const muteRoleSchema3 = await muteRoleModel.create(obj)
 
         }
 
