@@ -910,17 +910,22 @@ const dashboard = {
 
       }
 
+      console.log(a19)
       if (a19) {
         const ageSchema = await ageModel.findOne({ guild })
 
+        console.log(ageSchema)
         if (ageSchema) {
           const ageSchema2 = await ageModel.findOneAndUpdate({ age_19: a19 })
+        console.log(ageSchema2)
+
         } else {
           const obj = {
             guild,
             age_19: a19
           }
           const ageSchema3 = await ageModel.create(obj)
+        console.log(ageSchema3)
 
         }
 
