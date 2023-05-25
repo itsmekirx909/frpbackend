@@ -510,7 +510,6 @@ const dashboard = {
 
 
       if (new Set(values).size != values.length) {
-        console.log(new Set(values).size != values.length)
         res.json({
           message: 'Can not use same role for multiple ages!',
           status: false
@@ -523,7 +522,7 @@ const dashboard = {
         const giveawaySchema = await giveawayPingModel.findOne({ guild })
 
         if (giveawaySchema) {
-          const giveawaySchema2 = await giveawayPingModel.findOneAndUpdate({ giveaway_ping: giveawayPing })
+          const giveawaySchema2 = await giveawayPingModel.findOneAndUpdate({ guild }, { giveaway_ping: giveawayPing })
         } else {
           const obj = {
             guild,
@@ -540,7 +539,7 @@ const dashboard = {
         const unverifiedSchema = await unverifiedModel.findOne({ guild })
 
         if (unverifiedSchema) {
-          const unverifiedSchema2 = await unverifiedModel.findOneAndUpdate({ unverified_role: unverified })
+          const unverifiedSchema2 = await unverifiedModel.findOneAndUpdate({ guild }, { unverified_role: unverified })
         } else {
           const obj = {
             guild,
@@ -557,7 +556,7 @@ const dashboard = {
         const suggestionSchema = await suggestionChannelModel.findOne({ guild })
 
         if (suggestionSchema) {
-          const suggestionSchema2 = await suggestionChannelModel.findOneAndUpdate({ suggestion_channel: suggestionChannel })
+          const suggestionSchema2 = await suggestionChannelModel.findOneAndUpdate({ guild }, { suggestion_channel: suggestionChannel })
         } else {
           const obj = {
             guild,
@@ -574,7 +573,7 @@ const dashboard = {
         const confessionSchema = await confessionChannelModel.findOne({ guild })
 
         if (confessionSchema) {
-          const confessionSchema2 = await confessionChannelModel.findOneAndUpdate({ confession_channel: confessionChannel })
+          const confessionSchema2 = await confessionChannelModel.findOneAndUpdate({ guild }, { confession_channel: confessionChannel })
         } else {
           const obj = {
             guild,
@@ -591,7 +590,7 @@ const dashboard = {
         const confessionreplySchema = await confessionReplyChannelModel.findOne({ guild })
 
         if (confessionreplySchema) {
-          const confessionreplySchema2 = await confessionReplyChannelModel.findOneAndUpdate({ confession_reply_channel: confessionReplyChannel })
+          const confessionreplySchema2 = await confessionReplyChannelModel.findOneAndUpdate({ guild }, { confession_reply_channel: confessionReplyChannel })
         } else {
           const obj = {
             guild,
@@ -608,7 +607,7 @@ const dashboard = {
         const nsfwSchema = await nsfwChannelModel.findOne({ guild })
 
         if (nsfwSchema) {
-          const nsfwSchema2 = await nsfwChannelModel.findOneAndUpdate({ nsfw_channel: nsfw })
+          const nsfwSchema2 = await nsfwChannelModel.findOneAndUpdate({ guild }, { nsfw_channel: nsfw })
         } else {
           const obj = {
             guild,
@@ -625,7 +624,7 @@ const dashboard = {
         const profilesChannelsSchema = await profileChannelsModel.findOne({ guild })
 
         if (profilesChannelsSchema) {
-          const profilesChannelsSchema2 = await profileChannelsModel.findOneAndUpdate({ profiles_channel: profilesChannels })
+          const profilesChannelsSchema2 = await profileChannelsModel.findOneAndUpdate({ guild }, { profiles_channel: profilesChannels })
         } else {
           const obj = {
             guild,
@@ -642,7 +641,7 @@ const dashboard = {
         const applicationsChannelSchema = await applicationsChannelModel.findOne({ guild })
 
         if (applicationsChannelSchema) {
-          const applicationsChannelSchema2 = await applicationsChannelModel.findOneAndUpdate({ application_channel: applicationsChannel })
+          const applicationsChannelSchema2 = await applicationsChannelModel.findOneAndUpdate({ guild }, { application_channel: applicationsChannel })
         } else {
           const obj = {
             guild,
@@ -659,7 +658,7 @@ const dashboard = {
         const verificationChannelSchema = await verificationChannelModel.findOne({ guild })
 
         if (verificationChannelSchema) {
-          const verificationChannelSchema2 = await verificationChannelModel.findOneAndUpdate({ verification_channel: verificationChannel })
+          const verificationChannelSchema2 = await verificationChannelModel.findOneAndUpdate({ guild }, { verification_channel: verificationChannel })
         } else {
           const obj = {
             guild,
@@ -676,7 +675,7 @@ const dashboard = {
         const datingSchema = await profileChannelsModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ male_profiles_channel: maleChannel })
+          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ guild }, { male_profiles_channel: maleChannel })
         } else {
           const obj = {
             guild,
@@ -693,7 +692,7 @@ const dashboard = {
         const datingSchema = await profileChannelsModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ female_profiles_channel: femaleChannel })
+          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ guild }, { female_profiles_channel: femaleChannel })
         } else {
           const obj = {
             guild,
@@ -710,7 +709,7 @@ const dashboard = {
         const datingSchema = await profileChannelsModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ tnbg_profiles_channel: nbgfChannel })
+          const datingSchema2 = await profileChannelsModel.findOneAndUpdate({ guild }, { tnbg_profiles_channel: nbgfChannel })
         } else {
           const obj = {
             guild,
@@ -727,7 +726,7 @@ const dashboard = {
         const genderSchema = await genderModel.findOne({ guild })
 
         if (genderSchema) {
-          const genderSchema2 = await genderModel.findOneAndUpdate({ male_role: maleRole })
+          const genderSchema2 = await genderModel.findOneAndUpdate({ guild }, { male_role: maleRole })
         } else {
           const obj = {
             guild,
@@ -744,7 +743,7 @@ const dashboard = {
         const genderSchema = await genderModel.findOne({ guild })
 
         if (genderSchema) {
-          const genderSchema2 = await genderModel.findOneAndUpdate({ female_role: femaleRole })
+          const genderSchema2 = await genderModel.findOneAndUpdate({ guild }, { female_role: femaleRole })
         } else {
           const obj = {
             guild,
@@ -761,7 +760,7 @@ const dashboard = {
         const genderSchema = await genderModel.findOne({ guild })
 
         if (genderSchema) {
-          const genderSchema2 = await genderModel.findOneAndUpdate({ tnbgf_role: tnbgfRole })
+          const genderSchema2 = await genderModel.findOneAndUpdate({ guild }, { tnbgf_role: tnbgfRole })
         } else {
           const obj = {
             guild,
@@ -778,7 +777,7 @@ const dashboard = {
         const delmsgsSchema = await delmsgslogModel.findOne({ guild })
 
         if (delmsgsSchema) {
-          const delmsgsSchema2 = await delmsgslogModel.findOneAndUpdate({ message_delete_logs_channel: delmsgs })
+          const delmsgsSchema2 = await delmsgslogModel.findOneAndUpdate({ guild }, { message_delete_logs_channel: delmsgs })
         } else {
           const obj = {
             guild,
@@ -795,7 +794,7 @@ const dashboard = {
         const delmsgsSchema = await delmsgslogModel.findOne({ guild })
 
         if (delmsgsSchema) {
-          const delmsgsSchema2 = await delmsgslogModel.findOneAndUpdate({ message_update_logs_channel: updatemsgs })
+          const delmsgsSchema2 = await delmsgslogModel.findOneAndUpdate({ guild }, { message_update_logs_channel: updatemsgs })
         } else {
           const obj = {
             guild,
@@ -812,7 +811,7 @@ const dashboard = {
         const warnlogsSchema = await warningslogModel.findOne({ guild })
 
         if (warnlogsSchema) {
-          const warnlogsSchema2 = await warningslogModel.findOneAndUpdate({ warnings_logs_channel: warnlogs })
+          const warnlogsSchema2 = await warningslogModel.findOneAndUpdate({ guild }, { warnings_logs_channel: warnlogs })
         } else {
           const obj = {
             guild,
@@ -829,7 +828,7 @@ const dashboard = {
         const ticketlogsSchema = await ticketslogModel.findOne({ guild })
 
         if (ticketlogsSchema) {
-          const ticketlogsSchema2 = await ticketslogModel.findOneAndUpdate({ tickets_logs_channel: ticketlogs })
+          const ticketlogsSchema2 = await ticketslogModel.findOneAndUpdate({ guild }, { tickets_logs_channel: ticketlogs })
         } else {
           const obj = {
             guild,
@@ -846,7 +845,7 @@ const dashboard = {
         const kmbulogsSchema = await kmbulogModel.findOne({ guild })
 
         if (kmbulogsSchema) {
-          const kmbulogsSchema2 = await kmbulogModel.findOneAndUpdate({ kmbu_logs_channel: kmbulogs })
+          const kmbulogsSchema2 = await kmbulogModel.findOneAndUpdate({ guild }, { kmbu_logs_channel: kmbulogs })
         } else {
           const obj = {
             guild,
@@ -863,7 +862,7 @@ const dashboard = {
         const datingSchema = await datingModel.findOne({ guild })
 
         if (datingSchema) {
-          const datingSchema2 = await datingModel.findOneAndUpdate({ allowed_role: searching })
+          const datingSchema2 = await datingModel.findOneAndUpdate({ guild }, { allowed_role: searching })
         } else {
           const obj = {
             guild,
@@ -880,7 +879,7 @@ const dashboard = {
         const matchSchema = await matchInfoModel.findOne({ guild })
 
         if (matchSchema) {
-          const matchSchema2 = await matchInfoModel.findOneAndUpdate({ given_role: givenRole })
+          const matchSchema2 = await matchInfoModel.findOneAndUpdate({ guild }, { given_role: givenRole })
         } else {
           const obj = {
             guild,
@@ -897,7 +896,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_18: a18 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_18: a18 })
         } else {
           const obj = {
             guild,
@@ -910,14 +909,11 @@ const dashboard = {
 
       }
 
-      console.log(a19)
       if (a19) {
         const ageSchema = await ageModel.findOne({ guild })
 
-        console.log(ageSchema)
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_19: a19 })
-        console.log(ageSchema2)
+          const ageSchema2 = await ageModel.findOneAndUpdate( { guild }, { age_19: a19 })
 
         } else {
           const obj = {
@@ -925,8 +921,6 @@ const dashboard = {
             age_19: a19
           }
           const ageSchema3 = await ageModel.create(obj)
-        console.log(ageSchema3)
-
         }
 
 
@@ -936,7 +930,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_20: a20 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_20: a20 })
         } else {
           const obj = {
             guild,
@@ -953,7 +947,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_21: a21 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_21: a21 })
         } else {
           const obj = {
             guild,
@@ -970,7 +964,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_22: a22 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_22: a22 })
         } else {
           const obj = {
             guild,
@@ -987,7 +981,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_23: a23 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_23: a23 })
         } else {
           const obj = {
             guild,
@@ -1004,7 +998,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_24: a24 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_24: a24 })
         } else {
           const obj = {
             guild,
@@ -1021,7 +1015,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_25: a25 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_25: a25 })
         } else {
           const obj = {
             guild,
@@ -1038,7 +1032,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_26: a26 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_26: a26 })
         } else {
           const obj = {
             guild,
@@ -1055,7 +1049,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_27: a27 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_27: a27 })
         } else {
           const obj = {
             guild,
@@ -1072,7 +1066,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_28: a28 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_28: a28 })
         } else {
           const obj = {
             guild,
@@ -1089,7 +1083,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_29: a29 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_29: a29 })
         } else {
           const obj = {
             guild,
@@ -1106,7 +1100,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_30: a30 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_30: a30 })
         } else {
           const obj = {
             guild,
@@ -1123,7 +1117,7 @@ const dashboard = {
         const ageSchema = await ageModel.findOne({ guild })
 
         if (ageSchema) {
-          const ageSchema2 = await ageModel.findOneAndUpdate({ age_31: a31 })
+          const ageSchema2 = await ageModel.findOneAndUpdate({ guild }, { age_31: a31 })
         } else {
           const obj = {
             guild,
@@ -1140,7 +1134,7 @@ const dashboard = {
         const verifiedSchema = await verifiedModel.findOne({ guild })
 
         if (verifiedSchema) {
-          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ age_verified_role: verified })
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ guild }, { age_verified_role: verified })
         } else {
           const obj = {
             guild,
@@ -1157,7 +1151,7 @@ const dashboard = {
         const verifiedSchema = await verifiedModel.findOne({ guild })
 
         if (verifiedSchema) {
-          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ male_verified_role: verifiedMaleRole })
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ guild }, { male_verified_role: verifiedMaleRole })
         } else {
           const obj = {
             guild,
@@ -1174,7 +1168,7 @@ const dashboard = {
         const verifiedSchema = await verifiedModel.findOne({ guild })
 
         if (verifiedSchema) {
-          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ female_verified_role: verifiedFemaleRole })
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ guild }, { female_verified_role: verifiedFemaleRole })
         } else {
           const obj = {
             guild,
@@ -1191,7 +1185,7 @@ const dashboard = {
         const verifiedSchema = await verifiedModel.findOne({ guild })
 
         if (verifiedSchema) {
-          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ tnbgf_verified_role: verifiedTnbgfRole })
+          const verifiedSchema2 = await verifiedModel.findOneAndUpdate({ guild }, { tnbgf_verified_role: verifiedTnbgfRole })
         } else {
           const obj = {
             guild,
@@ -1208,7 +1202,7 @@ const dashboard = {
         const cmSchema = await cmModel.findOne({ guild })
 
         if (cmSchema) {
-          const cmSchema2 = await cmModel.findOneAndUpdate({ match_logs_channel: matchLogs })
+          const cmSchema2 = await cmModel.findOneAndUpdate({ guild }, { match_logs_channel: matchLogs })
         } else {
           const obj = {
             guild,
@@ -1225,7 +1219,7 @@ const dashboard = {
         const cmSchema = await cmModel.findOne({ guild })
 
         if (cmSchema) {
-          const cmSchema2 = await cmModel.findOneAndUpdate({ confessions_logs_channel: confessionsLogs })
+          const cmSchema2 = await cmModel.findOneAndUpdate({ guild }, { confessions_logs_channel: confessionsLogs })
         } else {
           const obj = {
             guild,
@@ -1242,7 +1236,7 @@ const dashboard = {
         const membersSchema = await membersModel.findOne({ guild })
 
         if (membersSchema) {
-          const membersSchema2 = await membersModel.findOneAndUpdate({ members_join_logs_channel: membersJoinLogs })
+          const membersSchema2 = await membersModel.findOneAndUpdate({ guild }, { members_join_logs_channel: membersJoinLogs })
         } else {
           const obj = {
             guild,
@@ -1259,7 +1253,7 @@ const dashboard = {
         const membersSchema = await membersModel.findOne({ guild })
 
         if (membersSchema) {
-          const membersSchema2 = await membersModel.findOneAndUpdate({ members_leave_logs_channel: membersLeaveLogs })
+          const membersSchema2 = await membersModel.findOneAndUpdate({ guild }, { members_leave_logs_channel: membersLeaveLogs })
         } else {
           const obj = {
             guild,
@@ -1276,7 +1270,7 @@ const dashboard = {
         const otherLogsSchema = await otherLogsModel.findOne({ guild })
 
         if (otherLogsSchema) {
-          const otherLogsSchema2 = await otherLogsModel.findOneAndUpdate({ misc_logs_channel: miscLogs })
+          const otherLogsSchema2 = await otherLogsModel.findOneAndUpdate({ guild }, { misc_logs_channel: miscLogs })
         } else {
           const obj = {
             guild,
@@ -1293,7 +1287,7 @@ const dashboard = {
         const otherLogsSchema = await otherLogsModel.findOne({ guild })
 
         if (otherLogsSchema) {
-          const otherLogsSchema2 = await otherLogsModel.findOneAndUpdate({ boosts_logs_channel: boostsLogs })
+          const otherLogsSchema2 = await otherLogsModel.findOneAndUpdate({ guild }, { boosts_logs_channel: boostsLogs })
         } else {
           const obj = {
             guild,
@@ -1310,7 +1304,7 @@ const dashboard = {
         const muteRoleSchema = await muteRoleModel.findOne({ guild })
 
         if (muteRoleSchema) {
-          const muteRoleSchema2 = await muteRoleModel.findOneAndUpdate({ role: muteRole })
+          const muteRoleSchema2 = await muteRoleModel.findOneAndUpdate({ guild }, { role: muteRole })
         } else {
           const obj = {
             guild,
